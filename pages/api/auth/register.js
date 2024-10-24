@@ -14,6 +14,8 @@ export default async function handler(req, res) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const [result] = await db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
 
+  
+    
     // Generate JWT
     const token = jwt.sign({ userId: result.insertId }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.status(201).json({ token });
