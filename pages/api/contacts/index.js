@@ -1,5 +1,5 @@
 import db from '../../../lib/db';
-import { verifyToken } from '../../../lib/auth'; // A helper function for JWT verification
+// import { verifyToken } from '../'; // A helper function for JWT verification
 
 export default async function handler(req, res) {
   const userId = verifyToken(req, res);
